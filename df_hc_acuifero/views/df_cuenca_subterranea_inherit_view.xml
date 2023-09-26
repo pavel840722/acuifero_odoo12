@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+      <record id="view_cuenca_subterranea_form_inherit" model="ir.ui.view">
+            <field name="name">df.cuenca.subterranea.form</field>
+            <field name="model">df.cuenca.subterranea</field>
+            <field name="inherit_id" ref="df_hc_div_hidro.view_cuenca_subterranea_form"/>
+            <field name="arch" type="xml">
+
+               <xpath expr="//field[@name='recurso_explotacion']" position="after">
+                <field name="country_id" invisible="True"/>
+                <field name="provincia_ids" invisible="True"/>
+                <field name="provincia_id" domain="[('country_id','=',country_id),('id', 'in', provincia_ids)]" invisible="1"/>
+                <field name="cota_topografica" select="1"/>
+                <field name="valor_precision"/>
+                <field name="coeficiente_aprovechamiento_hidraulico"/>
+                <field name="coeficiente_infiltracion"/>
+                <separator string="Values used for the calculation of the average level formulates" colspan="4"/>
+                <field name="a0"/>
+                <field name="a1"/>
+
+                    <notebook colspan="4">
+                        <page string="Pluviometers" invisible="context.get('mostrar_equipos', False)">
+                            <field name="equipo_ids" colspan="4" nolabel="1" options='{"nocreate": true}' invisible="context.get('mostrar_equipos', False)"/>
+                        </page>
+                        <page string="Levels">
+                            <group col="6">
+                                <separator string="Historic values" colspan="6"/>
+                                <field name="promedio_h_periodo"/>
+                                <field name="minimo_h_periodo"/>
+                                <field name="maximo_h_periodo"/>
+                                <field name="coeficiente_almacenamiento_calculado"/>
+                            </group>
+                            <newline/>
+                            <group col="6">
+                                <separator string="Historic values by formula" colspan="6"/>
+                                <field name="promedio_h_periodo_formula"/>
+                                <field name="minimo_h_periodo_formula"/>
+                                <field name="maximo_h_periodo_formula"/>
+                                <field name="coeficiente_almacenamiento_calculado_formula"/>
+                            </group>
+                            <newline/>
+                            <group col="4">
+                                <separator string="Values ajusted" colspan="4"/>
+                                <field name="minimo_h_periodo_fijo"/>
+                                <field name="maximo_h_periodo_fijo"/>
+                                <field name="promedio_h_periodo_fijo"/>
+                            </group>
+                            <!--<field name="nivel_ids" colspan="4" nolabel="1"/>-->
+                        </page>
+                    </notebook>
+                   </xpath>
+                </field>
+      </record>
+
+
+    <record model="ir.actions.act_window" id="df_action_cuenca_subterranea_with_pluviometers">
+        <field name="name">Cuencas subterráneas</field>
+        <field name="res_model">df.cuenca.subterranea</field>
+        <field name="view_mode">tree,form</field>
+        <!--<field name="context">{'mostrar_equipos': 0}</field>-->
+    </record>
+  </data>
+</odoo>

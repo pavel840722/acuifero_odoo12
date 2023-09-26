@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_lluvia_real_sector_search" model="ir.ui.view">
+           <field name="name">lluvia_real_sector.search</field>
+           <field name="model">df.lluvia.real.sector</field>
+            <field name="arch" type="xml">
+                <search string="Lluvia real de los sectores">
+                   <group>
+                        <field name="anno"/>
+                        <field name="sector_id"/>
+                    </group>
+                    <group expand="1" string="Group By">
+                        <filter string="Sector" name="sector_id" domain="[]"
+                                context="{'group_by':'sector_id'}"/>
+                    </group>
+                </search>
+           </field>
+        </record>
+        <record id="view_lluvia_real_sector_form" model="ir.ui.view">
+            <field name="name">lluvia_real_sector.form</field>
+            <field name="model">df.lluvia.real.sector</field>
+            <field name="arch" type="xml">
+                <form string="Lluvia real del sector">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="sector_id"/>
+                                <field name="media_hiperanual_mayo" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_julio" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_septiembre" options='{"regex": "^[0-9 .]+$"}' />
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                                <field name="media_hiperanual_junio" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_agosto" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_octubre" options='{"regex": "^[0-9 .]+$"}' />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_lluvia_real_sector_tree" model="ir.ui.view">
+            <field name="name">lluvia_real_sector.tree</field>
+            <field name="model">df.lluvia.real.sector</field>
+            <field name="arch" type="xml">
+                <tree string="Lluvia real de los sectores">
+                    <field name="sector_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_mayo" />
+                    <field name="media_hiperanual_junio" />
+                    <field name="media_hiperanual_julio" />
+                    <field name="media_hiperanual_agosto" />
+                    <field name="media_hiperanual_septiembre" />
+                    <field name="media_hiperanual_octubre" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="df_lluvia_real_sector_act_window" model="ir.actions.act_window">
+            <field name="name">Lluvia real de los sectores</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.lluvia.real.sector</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

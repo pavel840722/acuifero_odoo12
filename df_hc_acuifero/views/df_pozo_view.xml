@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+       <record model="ir.ui.view" id="pozo_form_view">
+            <field name="name">pozo.form</field>
+            <field name="model">df.pozo</field>
+            <field name="arch" type="xml">
+                <form string="Pozo Form">
+                    <sheet>
+                        <group>
+                            <group colspan="8" col="3">
+                                <separator string="Location" colspan="2"/>
+                                <field name="ubicado"/>
+                                <field name="cuenca_subterranea_id" attrs="{'invisible':[('ubicado','!=','basin')]}" options='{"nocreate": true}'/>
+                                <field name="sector_hidrologico_id" attrs="{'invisible':[('ubicado','!=','sector')]}" options='{"nocreate": true}'/>
+                                <field name="bloque_id" attrs="{'invisible':[('ubicado','!=','block')]}" options='{"nocreate": true}'/>
+                            </group>
+
+                            <group colspan="8" col="6">
+                                <separator string="General information" colspan="6"/>
+                                <field name="sigla"/>
+                                <field name="nombre"/>
+                                <field name="area"/>
+                                <field name="cota_topografica"/>
+                                <field name="profundidad_total"/>
+                                <field name="diametro"/>
+                                <field name="orden_sondeo"/>
+                                <field name="profundidad_linea_gramo"/>
+                                <field name="profundidad_piso_acuifero"/>
+                                <field name="abatimiento_maximo_permisible"/>
+                                <field name="coeficiente_almacenamiento"/>
+                                <field name="coeficiente_almacenamiento_string" invisible="1"/>
+                                <field name="representativo"/>
+                                <field name="recurso_explotable"/>
+                                <field name="valor_precision"/>
+                                <field name="coeficiente_aprovechamiento_hidraulico"/>
+                                <field name="coeficiente_infiltracion"/>
+                                <field name="country_id" invisible="True"/>
+                                <field name="provincia_ids" invisible="True"/>
+                                <field name="state_id" options='{"nocreate": true}' domain="[('country_id','=',country_id),('id', 'in', provincia_ids)]"/>
+                                <field name="municipality_id" options='{"nocreate": true}' domain="[('state_id','=',state_id)]" required="1"/>
+                                <field name="ueb_id" options='{"nocreate": true}' domain="[('state_id','=',state_id)]"/>
+                                <field name="zona_ueb_id" options='{"nocreate": true}' domain="[('ueb_id','=',ueb_id)]"/>
+                            </group>
+
+                            <group colspan="7" col="6">
+                                <separator string="Uses of the well" colspan="2"/>
+                                <field name="mensual"/>
+                                <field name="trimestral"/>
+                                <field name="semestral"/>
+                                <field name="batometrico"/>
+                            </group>
+
+                            <group colspan="8" col="3">
+                                <separator string="Coordinates" colspan="2"/>
+                                <field name="coordenadas"/>
+                                <field name="norte" attrs="{'invisible':[('coordenadas','!=','north')]}"/>
+                                <!--<field name="norte"/>-->
+                                <field name="este" attrs="{'invisible':[('coordenadas','!=','north')]}"/>
+                                <!--<field name="este"/>-->
+                                <field name="norte1" attrs="{'invisible':[('coordenadas','!=','south')]}"/>
+                                <!--<field name="norte1"/>-->
+                                <field name="este1" attrs="{'invisible':[('coordenadas','!=','south')]}"/>
+                                <!--<field name="este1"/>-->
+                            </group>
+
+                            <notebook colspan="4">
+                                <page string="Levels">
+                                    <group col="6" colspan="4">
+                                        <separator string="Historic values" colspan="6"/>
+                                        <field name="minimo_h_periodo"/>
+                                        <field name="maximo_h_periodo"/>
+                                        <field name="promedio_h_periodo"/>
+                                        <field name="coeficiente_almacenamiento_calculado"/>
+                                    </group>
+
+                                    <group col="4" colspan="4">
+                                        <separator string="Values ajusted" colspan="4"/>
+                                        <field name="minimo_h_periodo_fijo"/>
+                                        <field name="maximo_h_periodo_fijo"/>
+                                        <field name="promedio_h_periodo_fijo"/>
+                                        <field name="estado1" invisible="1"/>
+                                    </group>
+
+                                    <field colspan="4" name="nivel_ids" nolabel="1" readonly="1">
+                                        <tree string="Annual exploitation of wells">
+                                            <field name="anno"/>
+                                            <field name="media_hiperanual_enero_string"/>
+                                            <field name="media_hiperanual_febrero_string"/>
+                                            <field name="media_hiperanual_marzo_string"/>
+                                            <field name="media_hiperanual_abril_string"/>
+                                            <field name="media_hiperanual_mayo_string"/>
+                                            <field name="media_hiperanual_junio_string"/>
+                                            <field name="media_hiperanual_julio_string"/>
+                                            <field name="media_hiperanual_agosto_string"/>
+                                            <field name="media_hiperanual_septiembre_string"/>
+                                            <field name="media_hiperanual_octubre_string"/>
+                                            <field name="media_hiperanual_noviembre_string"/>
+                                            <field name="media_hiperanual_diciembre_string"/>
+                                        </tree>
+                                    </field>
+                                    <!--este codogo de arriba todavia-->
+                                </page>
+
+                                <page string="Pluviometers">
+                                    <field colspan="4" name="equipment_list" invisible="1"/>
+                                    <field colspan="4" name="equipo_ids" nolabel="1" options='{"nocreate": true}'/>
+                                    <!--Este campo equipo_ids es de otro modulo que no se ha hecho todavía en ODOO 12-->
+                                </page>
+                            </notebook>
+                            <!--<field name="coordenas_string"/>-->
+                            <!--<field name="equipment_list"/>-->
+                            <!--<field name="seco"/>-->
+                            <!--<field name="estado"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <!--lo ultimo-->
+      <record model="ir.ui.view" id="view_pozo_tree">
+          <field name="name">pozo</field>
+          <field name="model">df.pozo</field>
+          <field name="type">tree</field>
+          <field name="priority" eval="5"/>
+          <field name="arch" type="xml">
+              <tree string="Wells"
+                    colors="green:estado == 'muy favorable';blue:estado1 == 'favorable';red:estado1 == 'crítico';orange:estado1 == 'desfavorable';black:estado1 == 'no hay nivel';violet:estado1 == 'muy desfavorable'">
+                  <field name="cuenca_subterranea_id"/>
+                  <field name="sector_hidrologico_id"/>
+                  <field name="bloque_id"/>
+                  <field name="sigla"/>
+                  <field name="nombre"/>
+                  <!--<field name="codigo"/>-->
+                  <field name="area"/>
+                  <field name="cota_topografica"/>
+                  <!--<field name="coordenada_inicio_id"/>-->
+                  <!--<field name="coordenada_final_id"/>-->
+                  <field name="profundidad_total"/>
+                  <!--<field name="cota_terreno"/>-->
+                  <field name="diametro"/>
+                  <field name="orden_sondeo"/>
+                  <field name="profundidad_linea_gramo"/>
+                  <field name="profundidad_piso_acuifero"/>
+                  <field name="abatimiento_maximo_permisible"/>
+                  <field name="coeficiente_almacenamiento" invisible="1"/>
+                  <field name="coeficiente_almacenamiento_string"/>
+                  <!--<field name="datos_operativos"/>-->
+                  <!--<field name="cota_agua"/>-->
+                  <field name="coordenas_string"/>
+                  <field name="promedio_h_periodo" invisible="1"/>
+                  <field name="minimo_h_periodo" invisible="1"/>
+                  <field name="maximo_h_periodo" invisible="1"/>
+                  <field name="valor_precision" invisible="1"/>
+                  <field name="seco" invisible="1"/>
+                  <field name="estado"/>
+                  <field name="state_id"/>
+                  <field name="estado1" invisible="1"/>
+              </tree>
+          </field>
+      </record>
+
+<!--      <record model="ir.ui.view" id="pozo_tree_view">-->
+<!--            <field name="name">pozo.tree</field>-->
+<!--            <field name="model">df.pozo</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree string="Pozo Tree">-->
+<!--                    <field name="nombre"/>-->
+<!--                    <field name="area"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--      </record>-->
+
+      <!--<record model="ir.ui.view" id="pozo_search_view">-->
+            <!--<field name="name">pozo.search</field>-->
+            <!--<field name="model">df.pozo</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search>-->
+                    <!--<field name="nombre"/>-->
+                    <!--&lt;!&ndash;<field name="description"/>&ndash;&gt;-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+
+      <record model="ir.ui.view" id="view_pozo_search">
+            <field name="name">pozo</field>
+            <field name="model">df.pozo</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Wells">
+                    <group>
+                        <field name="sigla"/>
+                        <field name="nombre"/>
+                        <!--<field name="codigo"/>-->
+                        <field name="sector_hidrologico_id"/>
+                        <field name="bloque_id"/>
+                        <field name="state_id"/>
+                        <field name="estado1"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Underground basin" name="cuenca_subterranea_id"  domain="[]" context="{'group_by':'cuenca_subterranea_id'}"
+                                help="Filter according to the underground basin context"/>
+                        <filter icon="terp-go-year" string="Hydrogeological sector" name="sector_hidrologico_id"  domain="[]" context="{'group_by':'sector_hidrologico_id'}"
+                                help="Filter according to the hydrogeological sector context"/>
+                        <filter icon="terp-go-year" string="Block" name="bloque_id"  domain="[]" context="{'group_by':'bloque_id'}"
+                                help="Filter according to the block context"/>
+                        <filter icon="terp-go-year" string="Estado" name="estado1"  domain="[]" context="{'group_by':'estado1'}"
+                                help="Filter according to the state actual context"/>
+                        <filter icon="terp-go-year" string="Provincia" name="state_id"  domain="[]" context="{'group_by':'state_id'}"
+                                help="Filter according to the state context"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record model="ir.actions.act_window" id="df_action_pozo">
+            <field name="name">Pozo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.pozo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+       </record>
+
+  </data>
+</odoo>

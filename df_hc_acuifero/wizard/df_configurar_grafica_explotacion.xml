@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="df_configurar_grafica_explotacion_view" model="ir.ui.view">
+            <field name="name">Wizard to config graphic</field>
+            <field name="model">df.configurar.grafica.explotacion</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Config">
+                    <group>
+                        <group>
+                            <group colspan="8" col="2">
+                                <field name="desde"/>
+                                <field name="hasta"/>
+                                <field name="elemento_graficar"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group colspan="8" col="2">
+                            </group>
+                        </group>
+                        <group colspan="8" col="2">
+                            <field name="metodo_formula" attrs="{'invisible':[('elemento_graficar','=','pozo')]}"/>
+                            <field name="pozo_id"
+                                   attrs="{'invisible':[('elemento_graficar','!=','pozo')],'required':[('elemento_graficar','=','pozo')]}"
+                                   colspan='6'
+                                   domain="[('representativo','=',True)]"/>
+
+                            <field name="bloque_id"
+                                   attrs="{'invisible':[('elemento_graficar','!=','bloque')],'required':[('elemento_graficar','=','bloque')]}"
+                                   colspan='6' string='Block'/>
+                            <field string='Wells' options='{"nocreate": true}' name="pozo_bloque_ids"
+                                   attrs="{'invisible':[('elemento_graficar','!=','bloque')]}" colspan='6'
+                                   context="{'tipo_filtro':'bloque','filtro':bloque_id}">
+                                <tree string="Wells" editable='bottom'>
+                                    <field name="sigla"/>
+                                </tree>
+                                <form string="Wells">
+                                    <field name="sigla"/>
+                                </form>
+                            </field>
+
+                            <field name="sector_id"
+                                   attrs="{'invisible':[('elemento_graficar','!=','sector')],'required':[('elemento_graficar','=','sector')]}"
+                                   colspan='6' string='Sector'/>
+                            <field string='Wells' options='{"nocreate": true}' name="pozo_sector_ids"
+                                   attrs="{'invisible':[('elemento_graficar','!=','sector')]}" colspan='6'
+                                   context="{'tipo_filtro':'sector','filtro':sector_id}">
+                                <tree string="Wells" editable='bottom'>
+                                    <field name="sigla"/>
+                                </tree>
+                                <form string="Wells">
+                                    <field name="sigla"/>
+                                </form>
+                            </field>
+
+                            <field name="cuenca_id"
+                                   attrs="{'invisible':[('elemento_graficar','!=','cuenca')],'required':[('elemento_graficar','=','cuenca')]}"
+                                   colspan='6' string='Basin'/>
+                            <field string='Wells' options='{"nocreate": true}' name="pozo_cuenca_ids"
+                                   attrs="{'invisible':[('elemento_graficar','!=','cuenca')]}" colspan='6'
+                                   context="{'tipo_filtro':'cuenca','filtro':cuenca_id}">
+                                <tree string="Wells">
+                                    <field name="sigla"/>
+                                </tree>
+                                <form string="Wells">
+                                    <field name="sigla"/>
+                                </form>
+                            </field>
+
+                        </group>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="btn btn-outline-primary"
+                                icon='fa-times-circle'/>
+                        <button name="graficar" string="Graficar" type="object" class="btn btn-outline-primary"
+                                icon='fa-bar-chart-o'/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_configurar_grafica_explotacion" model="ir.actions.act_window">
+            <field name="name">Configurar gráfico</field>
+            <field name="res_model">df.configurar.grafica.explotacion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="df_configurar_grafica_explotacion_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="df_lluvia_real_cuenca_form_view" model="ir.ui.view">
+            <field name="name">df_lluvia_real_cuenca.form</field>
+            <field name="model">df.lluvia.real.cuenca</field>
+            <field name="arch" type="xml">
+                <form string="Lluvia real de la cuenca">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="cuenca_id"/>
+                                <field name="media_hiperanual_mayo" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_julio" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_septiembre" options='{"regex": "^[0-9 .]+$"}' />
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                                <field name="media_hiperanual_junio" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_agosto" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_octubre" options='{"regex": "^[0-9 .]+$"}' />
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="df_lluvia_real_cuenca_tree_view" model="ir.ui.view">
+            <field name="name">df_lluvia_real_cuenca.tree</field>
+            <field name="model">df.lluvia.real.cuenca</field>
+            <field name="arch" type="xml">
+                <tree string="Lluvia real de las cuencas">
+                    <field name="cuenca_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_mayo" />
+                    <field name="media_hiperanual_junio" />
+                    <field name="media_hiperanual_julio" />
+                    <field name="media_hiperanual_agosto" />
+                    <field name="media_hiperanual_septiembre" />
+                    <field name="media_hiperanual_octubre" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="df_lluvia_real_cuenca_search_view" model="ir.ui.view">
+            <field name="name">df_lluvia_real_cuenca.search</field>
+            <field name="model">df.lluvia.real.cuenca</field>
+            <field name="arch" type="xml">
+                <search string="Lluvia real de las cuencas">
+                    <group>
+                        <field name="anno"/>
+                        <field name="cuenca_id"/>
+                    </group>
+                    <group expand="1" string="Group By">
+                        <filter string="Cuenca" name="cuenca_id" domain="[]"
+                                context="{'group_by':'cuenca_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="df_lluvia_real_cuenca_act_window" model="ir.actions.act_window">
+            <field name="name">Lluvia real de las cuencas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.lluvia.real.cuenca</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

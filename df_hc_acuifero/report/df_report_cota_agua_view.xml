@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_report_cota_agua_search">
+            <field name="name">report_cota_agua</field>
+            <field name="model">df.report.cota.agua</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Cotas de agua">
+                    <group>
+                        <field name="sigla"/>
+                        <field name="anno"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Well" name="sigla"  domain="[]" context="{'group_by':'sigla'}"
+                                help="Filter according to the well context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record  model="ir.ui.view" id="view_report_cota_agua_tree">
+            <field name="name">report_cota_agua</field>
+            <field name="model">df.report.cota.agua</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Cotas de agua" create="false" edit="false" delete="false">
+                    <field name="id" invisible="1"/>
+                    <field name="pozo_id" invisible="1"/>
+                    <field name="sigla"/>
+                    <field name="anno"/>
+                    <field name="cota_agua_enero" attrs="{'invisible':[('cota_agua_enero','=',-999999.110)]}" />
+                    <field name="cota_agua_febrero" attrs="{'invisible':[('cota_agua_febrero','=',-999999.110)]}"/>
+                    <field name="cota_agua_marzo" attrs="{'invisible':[('cota_agua_marzo','=',-999999.110)]}"/>
+                    <field name="cota_agua_abril" attrs="{'invisible':[('cota_agua_abril','=',-999999.110)]}"/>
+                    <field name="cota_agua_mayo" attrs="{'invisible':[('cota_agua_mayo','=',-999999.110)]}"/>
+                    <field name="cota_agua_junio" attrs="{'invisible':[('cota_agua_junio','=',-999999.110)]}"/>
+                    <field name="cota_agua_julio" attrs="{'invisible':[('cota_agua_julio','=',-999999.110)]}"/>
+                    <field name="cota_agua_agosto" attrs="{'invisible':[('cota_agua_agosto','=',-999999.110)]}"/>
+                    <field name="cota_agua_septiembre" attrs="{'invisible':[('cota_agua_septiembre','=',-999999.110)]}"/>
+                    <field name="cota_agua_octubre" attrs="{'invisible':[('cota_agua_octubre','=',-999999.110)]}"/>
+                    <field name="cota_agua_noviembre" attrs="{'invisible':[('cota_agua_noviembre','=',-999999.110)]}"/>
+                    <field name="cota_agua_diciembre" attrs="{'invisible':[('cota_agua_diciembre','=',-999999.110)]}"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_report_cota_agua">
+            <field name="name">Cotas de agua</field>
+            <field name="res_model">df.report.cota.agua</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

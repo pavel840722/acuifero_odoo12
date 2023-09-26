@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="df_importar_explotacion_view" model="ir.ui.view">
+            <field name="name">Wizard to import exploitation</field>
+            <field name="model">df.importar.explotacion</field>
+            <field name="arch" type="xml">
+                <form string="Import exploitation">
+                    <group>
+
+                         <group>
+                             <field name="objeto"/>
+                             <field name="excel"/>
+                         </group>
+
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="btn btn-outline-primary" icon='fa-times-circle'/>
+                        <button name="importar" string="Import" type="object" class="btn btn-outline-primary" icon='fa-upload'/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="df_action_importar_explotacion1" model="ir.actions.act_window">
+            <field name="name">Import Exploitation</field>
+            <field name="res_model">df.importar.explotacion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+<!--           <field name="view_id" ref="df_importar_explotacion_view"/>-->
+           <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>

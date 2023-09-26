@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="df_importar_niveles_pozos_view" model="ir.ui.view">
+            <field name="name">Wizard to import wells levels</field>
+            <field name="model">df.importar.niveles.pozos</field>
+            <field name="arch" type="xml">
+                <form string="Import wells levels">
+                    <group>
+
+                        <group>
+                            <field name="excel"/>
+                        </group>
+
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="btn btn-outline-primary"
+                                icon='fa-times-circle'/>
+                        <button name="importar" string="Import" type="object" class="btn btn-outline-primary"
+                                icon='fa-upload'/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_df_importar_niveles_pozos" model="ir.actions.act_window">
+            <field name="name">Import wells levels</field>
+            <field name="res_model">df.importar.niveles.pozos</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="df_importar_niveles_pozos_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>

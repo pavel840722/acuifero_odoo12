@@ -1,0 +1,33 @@
+<odoo>
+	<data>
+
+		<record  model="ir.ui.view" id="view_zona_hidrografica_pluviometro_form">
+			<field name="name">view_zona_hidrografica_pluviometro_form</field>
+			<field name="model">df.zona.hidrografica.pluviometro</field>
+			<field name="type">form</field>
+			<field name="priority" eval="5"/>
+			<field name="arch" type="xml">
+			<form string="Hydrografic zone">
+                <field name="cuenca_hidrografica_id" options='{"nocreate": true}' colspan="4"/>
+                <notebook colspan="4">
+                    <page string="Pluviometers">
+                        <field name="equipo_ids" colspan="4" nolabel="1" options='{"nocreate": true}'/>
+                    </page>
+                </notebook>
+			</form>
+			</field>
+		</record>
+
+		<record  model="ir.ui.view" id="view_zona_hidrografica_pluviometro_tree">
+			<field name="name">view_zona_hidrografica_pluviometro_tree</field>
+			<field name="model">df.zona.hidrografica.pluviometro</field>
+			<field name="type">tree</field>
+			<field name="priority" eval="5"/>
+			<field name="arch" type="xml">
+			<tree string="Hydrografic zones">
+                <field name="cuenca_hidrografica_id" select="1"/>
+			</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

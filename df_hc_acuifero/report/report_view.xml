@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <odoo>
+    <record id="paperformat_indicadores" model="report.paperformat">
+        <field name="name">Parte cota de agua</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">300</field>
+        <field name="page_width">300</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">3</field>
+        <field name="margin_bottom">3</field>
+        <field name="margin_left">3</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">80</field>
+    </record>
+    <report id="action_parte_cota_agua"
+            model="df.report.cota.agua"
+            string="Parte cota de agua"
+            report_type="qweb-pdf"
+            name="df_hc_acuifero.parte_cota_agua_report"
+            file="df_hc_acuifero.parte_cota_agua_report"/>
+</odoo>

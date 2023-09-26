@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="df_hc_acuifero_mapa_ubicacion_pozos_view">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+        <link rel="stylesheet" type="text/scss"
+              href="/df_hc_base/static/src/css/df_template_mapa_style.css"/>
+        <div>
+            <div class="col-md-12 card common-bg-f my-4">
+                <!--                    <form id="filter-form" class="card common-bg-f my-4">-->
+                <!--                        <h2 class="card-header h6">Filtrar por:</h2>-->
+                <!--                        <div class="card-body" style="border-radius: 0">-->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="cmb_nivel" style="font-size: 14px; font-weight: bold">Nivel</label>
+                            <select name="cmb_nivel" id="cmb_nivel"
+                                    class="form-control form-control-sm2">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="td_prov">
+                        <div class="form-group">
+                            <label for="cmb_province" style="font-size: 14px; font-weight: bold">Provincia</label>
+                            <select name="cmb_province" id="cmb_province"
+                                    class="form-control form-control-sm2">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="td_mun">
+                        <div class="form-group">
+                            <label for="cmb_municipio" style="font-size: 14px; font-weight: bold">Municipio</label>
+                            <select name="cmb_municipio" id="cmb_municipio"
+                                    class="form-control form-control-sm2">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-left" style="margin-top: 18px">
+                            <input type="button" value="Mostrar" class="btn btn-warning btn-sm px-5"
+                                   id="btn_mostrar"
+                                   style="width: 154px;height: 38px;padding-top: 2px;margin-top: 5px;border-left-width: 1px;font-size: 20px;"/>
+                        </div>
+                    </div>
+                    <!--                            </div>-->
+                </div>
+                <!--                    </form>-->
+                <div class="row">
+                    <div class="col-md-12" id="div_mapa"/>
+                </div>
+            </div>
+
+        </div>
+        <!--        </div>-->
+    </t>
+</templates>

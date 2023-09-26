@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+<templates>
+    <t t-name="df_hc_acuifero_grafico_acuifero_view">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+
+        <!--****************** Estilo del TabPanel **********************-->
+        <style>
+            body {font-family: Arial;}
+
+            /* Style the tab */
+            .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+            background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+            background-color: #ccc;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            border: 1px solid #ccc;
+            }
+
+            /* Fade in tabs */
+            @-webkit-keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+            }
+
+            @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+            }
+        </style>
+
+
+        <!--****************** Estilo del Grafico con Highcharts **********************-->
+        <style type="text/css">
+            .highcharts-figure, .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 1000px;
+            margin: 1em auto;
+            }
+
+            #container {
+             heigth:400px;
+             width:1000px;
+            }
+
+            .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            }
+            .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+            }
+            .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+            }
+            .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+            }
+            .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+            }
+            .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+            }
+
+        </style>
+
+         <!--****************** Para mostrar el grafico cuando se ejecute por primera vez la accion **********************-->
+        <script>
+            $('#d_grafico').show();
+        </script>
+
+
+
+        <div class="tab" id="id1">
+            <button id="b_grafico" class="tablinks">Graficar</button>
+            <button id="b_tabla" class="tablinks">Tabla de magnitudes</button>
+        </div>
+
+
+        <div id="d_grafico" class="tabcontent">
+            <figure class="highcharts-figure">
+                <div id='container'></div>
+            </figure>
+            <canvas id="canvas" width="100%" height="100%"></canvas>
+        </div>
+
+        <div id="d_tabla" class="tabcontent">
+            <button class="btn_top_accion derecha" id="btn_exportar" height="25px" width="25px">
+                <img src="/df_hc_acuifero/static/src/img/excel.png" height="25px" width="25px"/>
+            </button>
+            <table class="clear_derecha">
+                <tr>
+                    <td style="width:98%;heigth:600px">
+                        <table id='tbl_resumen' style="width:100%;heigth:600px">
+                            <tr>
+                                <td class="tabla_cabezera">
+                                    <b>
+                                        <span style="color:white;mso-themecolor:background1">A&#241;o</span>
+                                    </b>
+                                </td>
+                                <td class="tabla_cabezera">
+                                    <b>
+                                        <span style="color:white;mso-themecolor:background1">&#916;h</span>
+                                    </b>
+                                </td>
+                                <td class="tabla_cabezera">
+                                    <b>
+                                        <span style="color:white;mso-themecolor:background1">&#916;zh</span>
+                                    </b>
+                                </td>
+                                <td class="tabla_cabezera">
+                                    <b>
+                                        <span style="color:white;mso-themecolor:background1">&#916;zs</span>
+                                    </b>
+                                </td>
+                                <td class="tabla_cabezera">
+                                    <b>
+                                        <span style="color:white;mso-themecolor:background1">&#916;H</span>
+                                    </b>
+                                </td>
+                                <td class="tabla_cabezera">
+                                    <b>
+                                        <span style="color:white;mso-themecolor:background1">&#916;Z</span>
+                                    </b>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </t>
+</templates>
+
+

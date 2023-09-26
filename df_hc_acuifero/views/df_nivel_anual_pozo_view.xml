@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+        <record  model="ir.ui.view" id="nivel_anual_pozo_form_view">
+            <field name="name">nivel.pozo.anual.form</field>
+            <field name="model">df.nivel.anual.pozo</field>
+            <field name="arch" type="xml">
+                <form string="Annual level of well">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="pozo_id"/>
+                                <field name="anno"/>
+                                <field name="media_hiperanual_enero_string"/>
+                                <field name="media_hiperanual_febrero_string"/>
+                                <field name="media_hiperanual_marzo_string"/>
+                                <field name="media_hiperanual_abril_string"/>
+                                <field name="media_hiperanual_mayo_string"/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_junio_string"/>
+                                <field name="media_hiperanual_julio_string"/>
+                                <field name="media_hiperanual_agosto_string"/>
+                                <field name="media_hiperanual_septiembre_string"/>
+                                <field name="media_hiperanual_octubre_string"/>
+                                <field name="media_hiperanual_noviembre_string"/>
+                                <field name="media_hiperanual_diciembre_string"/>
+                               <!--<field name="anno_final" invisible="1"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       <record model="ir.ui.view" id="view_nivel_anual_pozo_search">
+            <field name="name">nivel_anual_pozo</field>
+            <field name="model">df.nivel.anual.pozo</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Annual level of wells">
+                    <group>
+                        <field name="pozo_id"/>
+                        <field name="anno"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                       <filter icon="terp-go-year" string="Anno" name="anno"  domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the anno context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_nivel_anual_pozo_tree">
+            <field name="name">nivel_anual_pozo</field>
+            <field name="model">df.nivel.anual.pozo</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Annual level of wells">
+                    <field name="pozo_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string"/>
+                    <field name="media_hiperanual_febrero_string"/>
+                    <field name="media_hiperanual_marzo_string"/>
+                    <field name="media_hiperanual_abril_string"/>
+                    <field name="media_hiperanual_mayo_string"/>
+                    <field name="media_hiperanual_junio_string"/>
+                    <field name="media_hiperanual_julio_string"/>
+                    <field name="media_hiperanual_agosto_string"/>
+                    <field name="media_hiperanual_septiembre_string"/>
+                    <field name="media_hiperanual_octubre_string"/>
+                    <field name="media_hiperanual_noviembre_string"/>
+                    <field name="media_hiperanual_diciembre_string"/>
+                </tree>
+            </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="df_action_nivel_anual_pozo">
+            <field name="name">Nivel anual de los pozos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.nivel.anual.pozo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+       </record>
+    </data>
+</odoo>

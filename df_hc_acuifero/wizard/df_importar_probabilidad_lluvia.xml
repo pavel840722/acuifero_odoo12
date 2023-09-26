@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="df_importar_probabilidad_lluvia_view" model="ir.ui.view">
+            <field name="name">Wizard to import rain of probability</field>
+            <field name="model">df.importar.probabilidad.lluvia</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import probability">
+                    <group>
+                        <group>
+                            <field name="objeto"/>
+                            <field name="excel"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="btn btn-outline-primary"
+                                icon='fa-times-circle'/>
+                        <button name="importar" string="Import" type="object" class="btn btn-outline-primary"
+                                icon='fa-upload'/>
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="df_action_importar_probabilidad_lluvia" model="ir.actions.act_window">
+            <field name="name">Import probability of rain</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.importar.probabilidad.lluvia</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="df_importar_probabilidad_lluvia_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

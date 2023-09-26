@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_sector_hidrologico_search">
+            <field name="name">sector_hidrologico</field>
+            <field name="model">df.sector.hidrologico</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Hydrogeological sectors">
+                    <group>
+                        <field name="nombre"/>
+                        <field name="sigla"/>
+                        <field name="cuenca_subterranea_id"/>
+                        <!--<field name="provincia_id"/>-->
+                        <field name="estado1"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Underground basin" name="cuenca_subterranea_id" domain="[]"
+                                context="{'group_by':'cuenca_subterranea_id'}"
+                                help="Filter according to the underground basin context"/>
+                        <filter icon="terp-go-year" string="Estado" name="estado1" domain="[]"
+                                context="{'group_by':'estado1'}"
+                                help="Filter according to the state actual context"/>
+                        <filter icon="terp-go-year" string="Provincia" name="provincia_id" domain="[]"
+                                context="{'group_by':'provincia_id'}"
+                                help="Filter according to the state context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sector_hidrologico_form">
+            <field name="name">sector_hidrologico</field>
+            <field name="model">df.sector.hidrologico</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Hydrogeological sector">
+                    <sheet>
+                        <group>
+                            <group colspan="3" col="4">
+                                <field name="cuenca_subterranea_id" options='{"nocreate": true}'/>
+                                <field name="sigla"/>
+                                <field name="recurso_explotable"/>
+                                <field name="transmisibilidad"/>
+                                <field name="area"/>
+                                <field name="cota_topografica"/>
+                                <field name="coeficiente_aprovechamiento_hidraulico"/>
+                            </group>
+
+                            <group colspan="3" col="4">
+                                <field name="nombre"/>
+                                <field name="provincia_id" widget="selection" readonly="1"/>
+                                <field name="gradiente_hidraulico"/>
+                                <field name="ancho"/>
+                                <field name="coeficiente_almacenamiento"/>
+                                <field name="coeficiente_almacenamiento_string" invisible="1"/>
+                                <field name="valor_precision"/>
+                                <field name="coeficiente_infiltracion"/>
+                            </group>
+                        </group>
+
+                        <separator string="Values used for the calculation of the average level formulates"
+                                   colspan="4"/>
+                        <group>
+                            <group>
+                                <field name="a0"/>
+                            </group>
+
+                            <group>
+                                <field name="a1"/>
+                            </group>
+                        </group>
+                        <field name="estado1" invisible="1"/>
+
+
+                        <group>
+                            <notebook colspan="4">
+                                <page string="Pluviometers">
+                                    <field name="equipo_ids" colspan="4" nolabel="1" options='{"nocreate": true}'/>
+                                </page>
+                                <page string="Levels">
+                                    <group col="6">
+
+                                    </group>
+                                    <group col="6">
+                                        <separator string="Historic values" colspan="6"/>
+                                        <!--<field name="promedio_h_periodo"/>-->
+                                        <field name="minimo_h_periodo"/>
+                                        <field name="maximo_h_periodo"/>
+                                        <field name="coeficiente_almacenamiento_calculado"/>
+                                    </group>
+                                    <newline/>
+                                    <group col="6">
+                                        <separator string="Historic values by formula" colspan="6"/>
+                                        <!--<field name="promedio_h_periodo_formula"/>-->
+                                        <field name="minimo_h_periodo_formula"/>
+                                        <field name="maximo_h_periodo_formula"/>
+                                        <field name="coeficiente_almacenamiento_calculado_formula"/>
+                                    </group>
+                                    <newline/>
+                                    <group col="4">
+                                        <separator string="Values ajusted" colspan="4"/>
+                                        <field name="minimo_h_periodo_fijo"/>
+                                        <field name="maximo_h_periodo_fijo"/>
+                                        <field name="promedio_h_periodo_fijo"/>
+                                    </group>
+                                    <!--<field name="nivel_ids" colspan="4" nolabel="1"/>-->
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sector_hidrologico_tree">
+            <field name="name">sector_hidrologico</field>
+            <field name="model">df.sector.hidrologico</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Hydrogeological sectors"
+                      colors="green:estado == 'muy favorable';blue:estado == 'favorable';red:estado == 'crítico';orange:estado == 'desfavorable';black:estado == 'no hay nivel';violet:estado == 'muy desfavorable'">
+                    <field name="cuenca_subterranea_id"/>
+                    <field name="nombre"/>
+                    <field name="sigla"/>
+                    <field name="provincia_id"/>
+                    <field name="recurso_explotable"/>
+                    <field name="gradiente_hidraulico"/>
+                    <field name="transmisibilidad"/>
+                    <field name="ancho"/>
+                    <field name="area"/>
+                    <field name="coeficiente_almacenamiento" invisible="1"/>
+                    <field name="coeficiente_almacenamiento_string"/>
+                    <field name="estado"/>
+                    <!--<field name="provincia_id"/>-->
+                    <field name="estado1" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_sector_hidrologico">
+            <field name="name">Sector Hidrologico</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.sector.hidrologico</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+    </data>
+</odoo>

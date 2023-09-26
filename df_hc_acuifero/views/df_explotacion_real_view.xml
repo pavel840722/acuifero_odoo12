@@ -1,0 +1,578 @@
+<odoo>
+    <data>
+
+        <!--explotacion plan bloque views-->
+
+        <record model="ir.ui.view" id="view_explotacion_plan_bloque_search">
+            <field name="name">explotacion.plan.bloque.search</field>
+            <field name="model">df.explotacion.bloque.plan</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Planned exploitation of blocks">
+                    <group>
+                        <field name="anno"/>
+                        <field name="bloque_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Block" name="bloque_id"  domain="[]" context="{'group_by':'bloque_id'}"
+                                help="Filter according to the block context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno"  domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_plan_bloque_form">
+            <field name="name">explotacion.plan.bloque.form</field>
+            <field name="model">df.explotacion.bloque.plan</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Planned exploitation of block">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="bloque_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_plan_bloque_tree">
+            <field name="name">explotacion.plan.bloque.tree</field>
+            <field name="model">df.explotacion.bloque.plan</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Planned exploitation of blocks">
+                    <field name="bloque_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string" />
+                    <field name="media_hiperanual_febrero_string" />
+                    <field name="media_hiperanual_marzo_string" />
+                    <field name="media_hiperanual_abril_string" />
+                    <field name="media_hiperanual_mayo_string" />
+                    <field name="media_hiperanual_junio_string" />
+                    <field name="media_hiperanual_julio_string" />
+                    <field name="media_hiperanual_agosto_string" />
+                    <field name="media_hiperanual_septiembre_string" />
+                    <field name="media_hiperanual_octubre_string" />
+                    <field name="media_hiperanual_noviembre_string" />
+                    <field name="media_hiperanual_diciembre_string" />
+                    <field name="sector_id"/>
+                    <field name="cuenca_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--explotacion real bloque views-->
+
+        <record model="ir.ui.view" id="view_explotacion_real_bloque_search">
+            <field name="name">explotacion.real.bloque.search</field>
+            <field name="model">df.explotacion.bloque.real</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Real exploitation of blocks">
+                    <group>
+                        <field name="anno"/>
+                        <field name="bloque_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Block" name="bloque_id" domain="[]"
+                                context="{'group_by':'bloque_id'}"
+                                help="Filter according to the block context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno" domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_explotacion_real_bloque_form">
+            <field name="name">explotacion.real.bloque.form</field>
+            <field name="model">df.explotacion.bloque.real</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Real exploitation of block">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="bloque_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_explotacion_real_bloque_tree">
+            <field name="name">explotacion.real.bloque.tree</field>
+            <field name="model">df.explotacion.bloque.real</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Real exploitation of blocks">
+                    <field name="bloque_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string"/>
+                    <field name="media_hiperanual_febrero_string"/>
+                    <field name="media_hiperanual_marzo_string"/>
+                    <field name="media_hiperanual_abril_string"/>
+                    <field name="media_hiperanual_mayo_string"/>
+                    <field name="media_hiperanual_junio_string"/>
+                    <field name="media_hiperanual_julio_string"/>
+                    <field name="media_hiperanual_agosto_string"/>
+                    <field name="media_hiperanual_septiembre_string"/>
+                    <field name="media_hiperanual_octubre_string"/>
+                    <field name="media_hiperanual_noviembre_string"/>
+                    <field name="media_hiperanual_diciembre_string"/>
+                    <field name="sector_id"/>
+                    <field name="cuenca_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--explotacion plan sector views-->
+
+        <record model="ir.ui.view" id="view_explotacion_plan_sector_search">
+            <field name="name">explotacion.plan.sector.search</field>
+            <field name="model">df.explotacion.sector.plan</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Planned exploitation of sectors">
+                    <group>
+                        <field name="anno"/>
+                        <field name="sector_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Sector" name="sector_id"  domain="[]" context="{'group_by':'sector_id'}"
+                                help="Filter according to the sector context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno"  domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_plan_sector_form">
+            <field name="name">explotacion.plan.sector.form</field>
+            <field name="model">df.explotacion.sector.plan</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Planned exploitation of sector">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="sector_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_plan_sector_tree">
+            <field name="name">explotacion.plan.sector.tree</field>
+            <field name="model">df.explotacion.sector.plan</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Planned exploitation of sectors">
+                    <field name="sector_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string" />
+                    <field name="media_hiperanual_febrero_string" />
+                    <field name="media_hiperanual_marzo_string" />
+                    <field name="media_hiperanual_abril_string" />
+                    <field name="media_hiperanual_mayo_string" />
+                    <field name="media_hiperanual_junio_string" />
+                    <field name="media_hiperanual_julio_string" />
+                    <field name="media_hiperanual_agosto_string" />
+                    <field name="media_hiperanual_septiembre_string" />
+                    <field name="media_hiperanual_octubre_string" />
+                    <field name="media_hiperanual_noviembre_string" />
+                    <field name="media_hiperanual_diciembre_string" />
+                    <field name="cuenca_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--explotacion real sector views-->
+
+        <record model="ir.ui.view" id="view_explotacion_real_sector_search">
+            <field name="name">explotacion.real.sector.search</field>
+            <field name="model">df.explotacion.sector.real</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Real exploitation of sectors">
+                    <group>
+                        <field name="anno"/>
+                        <field name="sector_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Sector" name="sector_id" domain="[]"
+                                context="{'group_by':'sector_id'}"
+                                help="Filter according to the sector context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno" domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_explotacion_real_sector_form">
+            <field name="name">explotacion.real.sector.form</field>
+            <field name="model">df.explotacion.sector.real</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Real exploitation of sector">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="sector_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_explotacion_real_sector_tree">
+            <field name="name">explotacion.real.sector.tree</field>
+            <field name="model">df.explotacion.sector.real</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Real exploitation of sectors">
+                    <field name="sector_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string"/>
+                    <field name="media_hiperanual_febrero_string"/>
+                    <field name="media_hiperanual_marzo_string"/>
+                    <field name="media_hiperanual_abril_string"/>
+                    <field name="media_hiperanual_mayo_string"/>
+                    <field name="media_hiperanual_junio_string"/>
+                    <field name="media_hiperanual_julio_string"/>
+                    <field name="media_hiperanual_agosto_string"/>
+                    <field name="media_hiperanual_septiembre_string"/>
+                    <field name="media_hiperanual_octubre_string"/>
+                    <field name="media_hiperanual_noviembre_string"/>
+                    <field name="media_hiperanual_diciembre_string"/>
+                    <field name="cuenca_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--explotacion plan cuenca views-->
+
+        <record model="ir.ui.view" id="view_explotacion_plan_cuenca_search">
+            <field name="name">explotacion.plan.cuenca.search</field>
+            <field name="model">df.explotacion.cuenca.plan</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Planned exploitation of underground basins">
+                    <group>
+                        <field name="anno"/>
+                        <field name="cuenca_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Underground basin" name="cuenca_id"  domain="[]" context="{'group_by':'cuenca_id'}"
+                                help="Filter according to the underground basin context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno"  domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_plan_cuenca_form">
+            <field name="name">explotacion.plan.cuenca.form</field>
+            <field name="model">df.explotacion.cuenca.plan</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Planned exploitation of underground basin">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="cuenca_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_plan_cuenca_tree">
+            <field name="name">explotacion.plan.cuenca.tree</field>
+            <field name="model">df.explotacion.cuenca.plan</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Planned exploitation of underground basins">
+                    <field name="cuenca_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string" />
+                    <field name="media_hiperanual_febrero_string" />
+                    <field name="media_hiperanual_marzo_string" />
+                    <field name="media_hiperanual_abril_string" />
+                    <field name="media_hiperanual_mayo_string" />
+                    <field name="media_hiperanual_junio_string" />
+                    <field name="media_hiperanual_julio_string" />
+                    <field name="media_hiperanual_agosto_string" />
+                    <field name="media_hiperanual_septiembre_string" />
+                    <field name="media_hiperanual_octubre_string" />
+                    <field name="media_hiperanual_noviembre_string" />
+                    <field name="media_hiperanual_diciembre_string" />
+                </tree>
+            </field>
+        </record>
+
+        <!--explotacion real cuenca views-->
+
+        <record model="ir.ui.view" id="view_explotacion_real_cuenca_search">
+            <field name="name">explotacion.real.cuenca.search</field>
+            <field name="model">df.explotacion.cuenca.real</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Real exploitation of underground basins">
+                    <group>
+                        <field name="anno"/>
+                        <field name="cuenca_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Underground basin" name="cuenca_id"  domain="[]" context="{'group_by':'cuenca_id'}"
+                                help="Filter according to the underground basin context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno"  domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_real_cuenca_form">
+            <field name="name">explotacion.real.cuenca.form</field>
+            <field name="model">df.explotacion.cuenca.real</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Real exploitation of underground basin">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="cuenca_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_real_cuenca_tree">
+            <field name="name">explotacion.real.cuenca.tree</field>
+            <field name="model">df.explotacion.cuenca.real</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Real exploitation of underground basins">
+                    <field name="cuenca_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string" />
+                    <field name="media_hiperanual_febrero_string" />
+                    <field name="media_hiperanual_marzo_string" />
+                    <field name="media_hiperanual_abril_string" />
+                    <field name="media_hiperanual_mayo_string" />
+                    <field name="media_hiperanual_junio_string" />
+                    <field name="media_hiperanual_julio_string" />
+                    <field name="media_hiperanual_agosto_string" />
+                    <field name="media_hiperanual_septiembre_string" />
+                    <field name="media_hiperanual_octubre_string" />
+                    <field name="media_hiperanual_noviembre_string" />
+                    <field name="media_hiperanual_diciembre_string" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_block_real">
+            <field name="name">Explotacion Bloque Real</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.bloque.real</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_sector_real">
+            <field name="name">Explotacion Sector Real</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.sector.real</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_cuenca_real">
+            <field name="name">Explotacion Cuenca Real</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.cuenca.real</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_block_plan">
+            <field name="name">Planned exploitation of the blocks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.bloque.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_sector_plan">
+            <field name="name">Planned exploitation of sectors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.sector.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_cuenca_plan">
+            <field name="name">Planned exploitation of underground basins</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.cuenca.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+    </data>
+</odoo>

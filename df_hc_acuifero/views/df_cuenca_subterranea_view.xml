@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+        <record id="view_cuenca_subterranea_tree" model="ir.ui.view">
+            <field name="name">df.cuenca.subterranea.tree</field>
+            <field name="model">df.cuenca.subterranea</field>
+            <field name="arch" type="xml">
+                <tree string="Cuencas subterráneas">
+                    <field name="cota_topografica"/>
+                    <field name="valor_precision"/>
+                    <field name="a0"/>
+                    <field name="a1"/>
+                    <field name="minimo_h_periodo_fijo"/>
+                    <field name="maximo_h_periodo_fijo"/>
+                    <field name="promedio_h_periodo_fijo"/>
+                    <field name="coeficiente_aprovechamiento_hidraulico"/>
+                    <field name="coeficiente_infiltracion"/>
+                    <field name="coeficiente_almacenamiento_calculado"/>
+                    <field name="coeficiente_almacenamiento_calculado_formula"/>
+                    <field name="seguridad_compania"/>
+                </tree>
+            </field>
+        </record>
+  <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">df.cuenca.subterranea.form</field>
+            <field name="model">df.cuenca.subterranea</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+
+                </form>
+            </field>
+  </record>
+
+    <record model="ir.actions.act_window" id="df_action_cuenca_subterranea">
+        <field name="name">Cuencas subterráneas</field>
+        <field name="res_model">df.cuenca.subterranea</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+  </data>
+</odoo>

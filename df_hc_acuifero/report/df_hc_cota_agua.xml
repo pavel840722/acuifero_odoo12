@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="parte_cota_agua_report">
+        <t t-call="web.basic_layout">
+            <div class="page">
+              <div class="container">
+                  <div align="center"><strong>______________________________________________________________________________________________________________________________</strong></div><br/>
+                  <div align="center"><strong>PARTE DE COTA DE AGUA</strong></div><br/>
+                  <table width="100%">
+                     <tr>
+                        <td style="border: 2px solid black; text-align:center; width:10%" >Sigla</td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" >Año</td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Enero </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Febrero </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Marzo </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Abril </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Mayo </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Junio </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Julio </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Agosto </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:6%"  ><pre>Cota<br/>H2O<br/> Septiembre </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:10%" ><pre>Cota<br/>H2O<br/> Octubre </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:6%"  ><pre>Cota<br/>H2O<br/> Noviembre </pre></td>
+                        <td style="border: 2px solid black; text-align:center; width:6%"  ><pre>Cota<br/>H2O<br/> Diciembre </pre></td>
+                     </tr>
+                     <t t-foreach="lista" t-as="i">
+                            <tr>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['sigla']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['anno']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['enero']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['febrero']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['marzo']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['abril']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['mayo']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['junio']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['julio']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['agosto']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['septiembre']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['octubre']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['noviembre']"/></td>
+                                <td  style="border: 2px solid black; text-align:center;" scope="col"><span t-esc="i['diciembre']"/></td>
+                            </tr>
+                        </t>
+                 </table>
+              </div>
+            </div>
+            <p style="page-break-before:always;"></p>
+        </t>
+    </template>
+</odoo>

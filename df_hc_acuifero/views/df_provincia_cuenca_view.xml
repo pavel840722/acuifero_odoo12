@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="df_provincia_cuenca_tree_view" model="ir.ui.view">
+            <field name="name">df_report_provincia_cuenca.tree</field>
+            <field name="model">df.report.provincia.cuenca</field>
+            <field name="arch" type="xml">
+                <tree string="Provincias" create="false" edit="false" delete="false">
+                    <field name="id"/>
+                    <field name="nombre"/>
+                    <field name="codigo"/>
+                    <field name="region_id"/>
+                    <!--<field name="area"/>-->
+                    <field name="estado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="df_reporte_provincia_cuenca_search_view" model="ir.ui.view">
+            <field name="name">df_report_provincia_cuenca.search</field>
+            <field name="model">df.report.provincia.cuenca</field>
+            <field name="arch" type="xml">
+                <search string="Country States">
+                    <group>
+                        <field name="nombre" string="Name"/>
+                        <field name="codigo" string="Code"/>
+                        <field name="region_id"/>
+                    </group>
+                    <group expand="1" string="Group By">
+                        <filter string="Region" name="region_id" domain="[]"
+                                context="{'group_by':'region_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="df_action_provincia_cuenca" model="ir.actions.act_window">
+            <field name="name">Estado de las provincias</field>
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <field name="res_model">df.report.provincia.cuenca</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">tree</field>
+
+        </record>
+
+    </data>
+</odoo>

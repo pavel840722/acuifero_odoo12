@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="df_hc_acuifero assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/df_hc_acuifero/static/src/css/df.hc.acuifero.css"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_grafico_acuifero.js"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_grafico_linigrama_cotas.js"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_grafico_linigrama_explotacion.js"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_grafico_linigrama_recorridos.js"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_grafico_pronostico.js"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_grafico_pronostico_seco.js"/>
+                <script type="text/javascript" src="/df_hc_acuifero/static/src/js/df_hc_acuifero_gis.js"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>

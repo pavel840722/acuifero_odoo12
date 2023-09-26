@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+
+<templates>
+    <t t-name="df_hc_acuifero_mapa_estado_actual_prov_view">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+        <link rel="stylesheet" type="text/css"
+              href="/df_hc_base/static/src/css/df_template_mapa_style.css"/>
+        <div id="div_gral1">
+            <div id="div_superior_estado">
+                <table>
+                    <tr id="tr_estados" style="display:none">
+                        <td class="estado_fav">Favorable</td>
+                        <td class="estado_des">Desfavorable</td>
+                        <td class="estado_muydes">Muy desfavorable</td>
+                        <td class="estado_crit">Crítico</td>
+                        <td class="estado_nivel">No hay nivel</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="div_mapa"/>
+
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="df_acuifero_integracion_view" model="ir.ui.view">
+            <field name="name">Wizard to integration</field>
+            <field name="model">df.acuifero.integracion</field>
+            <field name="arch" type="xml">
+                <form string="Wizard to integration">
+                    <group>
+
+                         <!--<group>-->
+                             <!--<field name="excel"/>-->
+                         <!--</group>-->
+
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancelar"/>
+                        <button name="integrar" string="Integrar" type="object"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_df_acuifero_integracion" model="ir.actions.act_window">
+            <field name="name">Integration with SGIAT</field>
+            <field name="res_model">df.acuifero.integracion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="df_acuifero_integracion_view"/>
+           <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+         <!-- Groups -->
+        <record id="group_hc_especialista_acuifero" model="res.groups">
+            <field name="name">Especialista de aguas subterráneas</field>
+        </record>
+
+        <record id="group_hc_visualizar_acuifero" model="res.groups">
+            <field name="name">Visualizador de aguas subterráneas</field>
+        </record>
+
+        <record id="group_hc_base_director_nacional" model="res.groups">
+            <field name="name">Directores Nacionales</field>
+            <field name="category_id" ref="base.module_category_suite_hidrocuba"/>
+        </record>
+
+    </data>
+</odoo>
+

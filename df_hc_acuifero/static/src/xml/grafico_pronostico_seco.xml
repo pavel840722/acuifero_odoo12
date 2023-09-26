@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+<templates>
+    <t t-name="df_hc_acuifero_grafico_pronostico_seco_view">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+
+        <!--****************** Estilo del TabPanel **********************-->
+        <style>
+            body {font-family: Arial;}
+
+            /* Style the tab */
+            .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+            background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+            background-color: #ccc;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            border: 1px solid #ccc;
+            }
+
+            /* Fade in tabs */
+            @-webkit-keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+            }
+
+            @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+            }
+        </style>
+
+
+         <!--****************** Estilo del Grafico con Highcharts **********************-->
+        <style type="text/css">
+            .highcharts-figure, .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 1000px;
+            margin: 5px;
+            }
+
+            #container {
+             heigth:400px;
+             width:1000px;
+            }
+        </style>
+
+        <!--****************** Para mostrar el grafico cuando se ejecute por primera vez la accion **********************-->
+        <script>
+            $('#d_grafico').show();
+        </script>
+
+
+        <div class="tab" id="id1">
+            <button id="b_tabla" class="tablinks">Tabla de magnitudes</button>
+            <button id="b_grafico" class="tablinks">Graficar</button>
+        </div>
+
+        <div id="d_tabla" class="tabcontent">
+            <table id="grid" class="grid_pronostico">
+                <thead>
+                    <tr>
+                        <th data-field="xxx"></th>
+                        <th data-field="may">Mayo</th>
+                        <th data-field="june">Junio</th>
+                        <th data-field="july">Julio</th>
+                        <th data-field="august">Agosto</th>
+                        <th data-field="september">Septiembre</th>
+                        <th data-field="october">Octubre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="Nreal">
+                        <td>Lluvia real</td>
+                        <td contenteditable='true' id="Nreal_5">0</td>
+                        <td contenteditable='true' id="Nreal_6">0</td>
+                        <td contenteditable='true' id="Nreal_7">0</td>
+                        <td contenteditable='true' id="Nreal_8">0</td>
+                        <td contenteditable='true' id="Nreal_9">0</td>
+                        <td contenteditable='true' id="Nreal_10">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="d_grafico" class="tabcontent">
+            <div id="contenedor_pronostico" style="width:100%;heigth:100%">
+                <div id="div_table_acuifero_pronostico_seco ">
+                    <table id="table_pronostico_seco" class="grid_pronostico">
+                        <thead>
+                            <tr>
+                                <th colspan="10" data-field="pronostico" id="prono">Pronóstico Período Seco</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2" data-field="mes">Mes</th>
+                                <th colspan="9" data-field="niveles">Niveles</th>
+                            </tr>
+                            <tr>
+                                <th data-field="real-1">Nivel Pron.</th>
+                                <th data-field="real-2">Nivel Real</th>
+                                <th data-field="real-3">Dif. P-R</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="xxxx_seco">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="div_table_acuifero_pronostico ">
+                    <table id="table_pronostico" class="grid_pronostico">
+                        <thead>
+                            <tr>
+                                <th colspan="10" data-field="pronostico" id="prono">Pronóstico Período Húmedo</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2" data-field="mes">Mes</th>
+                                <th colspan="9" data-field="niveles">Niveles</th>
+                            </tr>
+                            <tr>
+                                <th data-field="real-1">Real-(1)</th>
+                                <th data-field="real-2">Nivel Lluvia Real-(2)</th>
+                                <th data-field="real-3">50%-(3)</th>
+                                <th data-field="real-4">75%-(4)</th>
+                                <th data-field="real-5">95%-(5)</th>
+                                <th data-field="dif-1">Dif. 1-2</th>
+                                <th data-field="dif-2">Dif. 1-3</th>
+                                <th data-field="dif-3">Dif. 1-4</th>
+                                <th data-field="dif-4">Dif. 1-5</th>
+                            </tr>
+                        </thead>
+                        <tbody id="xxxx">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <figure class="highcharts-figure">
+                        <div id='container'></div>
+                    </figure>
+                    <canvas id="canvas" width="100%" height="100%"></canvas>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

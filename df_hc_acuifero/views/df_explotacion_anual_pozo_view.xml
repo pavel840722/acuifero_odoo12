@@ -1,0 +1,196 @@
+<openerp>
+    <data>
+
+        <!--plan explotacion anual pozo views-->
+
+        <record model="ir.ui.view" id="view_plan_explotacion_anual_pozo_search">
+            <field name="name">explotacion_anual_pozo</field>
+            <field name="model">df.plan.explotacion.anual.pozo</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Annual exploitation plan of wells">
+                    <group>
+                        <field name="anno"/>
+                        <field name="pozo_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Well" name="pozo_id"  domain="[]" context="{'group_by':'pozo_id'}"
+                                help="Filter according to the well context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_plan_explotacion_anual_pozo_form">
+            <field name="name">explotacion_anual_pozo</field>
+            <field name="model">df.plan.explotacion.anual.pozo</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Annual exploitation plan of well">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="pozo_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <!--<field name="anno_final" invisible="1"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_plan_explotacion_anual_pozo_tree">
+            <field name="name">explotacion_anual_pozo</field>
+            <field name="model">df.plan.explotacion.anual.pozo</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Annual exploitation plan of wells">
+                    <field name="pozo_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string" />
+                    <field name="media_hiperanual_febrero_string" />
+                    <field name="media_hiperanual_marzo_string" />
+                    <field name="media_hiperanual_abril_string" />
+                    <field name="media_hiperanual_mayo_string" />
+                    <field name="media_hiperanual_junio_string" />
+                    <field name="media_hiperanual_julio_string" />
+                    <field name="media_hiperanual_agosto_string" />
+                    <field name="media_hiperanual_septiembre_string" />
+                    <field name="media_hiperanual_octubre_string" />
+                    <field name="media_hiperanual_noviembre_string" />
+                    <field name="media_hiperanual_diciembre_string" />
+                    <field name="sector_id" />
+                    <field name="bloque_id" />
+                    <field name="cuenca_id" />
+                </tree>
+            </field>
+        </record>
+
+        <!--explotacion real anual pozo views-->
+
+        <record model="ir.ui.view" id="view_explotacion_anual_pozo_search">
+            <field name="name">explotacion_anual_pozo</field>
+            <field name="model">df.explotacion.anual.pozo</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Annual exploitation of wells">
+                    <group>
+                        <field name="anno"/>
+                        <field name="pozo_id"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Well" name="pozo_id"  domain="[]" context="{'group_by':'pozo_id'}"
+                                help="Filter according to the well context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_anual_pozo_form">
+            <field name="name">explotacion_anual_pozo</field>
+            <field name="model">df.explotacion.anual.pozo</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Annual exploitation of well">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="pozo_id"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$"}'/>
+                                <!--<field name="anno_final" invisible="1"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_explotacion_anual_pozo_tree">
+            <field name="name">explotacion_anual_pozo</field>
+            <field name="model">df.explotacion.anual.pozo</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Annual exploitation of wells">
+                    <field name="pozo_id"/>
+                    <field name="anno"/>
+                    <field name="media_hiperanual_enero_string" />
+                    <field name="media_hiperanual_febrero_string" />
+                    <field name="media_hiperanual_marzo_string" />
+                    <field name="media_hiperanual_abril_string" />
+                    <field name="media_hiperanual_mayo_string" />
+                    <field name="media_hiperanual_junio_string" />
+                    <field name="media_hiperanual_julio_string" />
+                    <field name="media_hiperanual_agosto_string" />
+                    <field name="media_hiperanual_septiembre_string" />
+                    <field name="media_hiperanual_octubre_string" />
+                    <field name="media_hiperanual_noviembre_string" />
+                    <field name="media_hiperanual_diciembre_string" />
+                    <field name="sector_id" />
+                    <field name="bloque_id" />
+                    <field name="cuenca_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_pozo_plan">
+            <field name="name">Planned exploitation of wells</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.plan.explotacion.anual.pozo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="df_action_explotacion_pozo_real">
+            <field name="name">Explotacion Anual Pozo</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.explotacion.anual.pozo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record>
+    </data>
+</openerp>

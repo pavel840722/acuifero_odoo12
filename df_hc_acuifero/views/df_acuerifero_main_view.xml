@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+     <menuitem name="Underground hydraulic set" id="menu_top_df_hc_acuifero" sequence="1"  web_icon="images/image.png" web_icon_hover="images/image-hover.png" groups="group_hc_base_director_nacional"/>
+         <menuitem name="Underground basins" id="df_action_cuenca_subterranea_with_pluviometers_item_menu" action="df_action_cuenca_subterranea_with_pluviometers" parent="menu_top_df_hc_acuifero" sequence="2"/>
+         <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Hydrogeological sector" id="df_sector_hidrologico_item_menu" action="df_action_sector_hidrologico" parent="menu_top_df_hc_acuifero" sequence="3"/>
+         <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Block" id="df_bloque_item_menu" action="df_action_bloque" parent="menu_top_df_hc_acuifero" sequence="4"/>
+	     <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Well" id="df_pozo_item_menu" parent="menu_top_df_hc_acuifero" action="df_action_pozo" sequence="5"/>
+         <menuitem  name="Annual level of wells" id="df_nivel_anual_pozo_item_menu" action="df_action_nivel_anual_pozo" parent="menu_top_df_hc_acuifero" sequence="6"/>
+				 
+        <menuitem name="Rain probability" id="df0_probabilidad_lluvia_item_menu" parent="menu_top_df_hc_acuifero" sequence="7"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Wells" id="df_probabilidad_pozo_item_menu" action="df_action_probabilidad_pozo" parent="df0_probabilidad_lluvia_item_menu" sequence="4"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Blocks" id="df_probabilidad_bloque_item_menu" action="df_action_probabilidad_bloque" parent="df0_probabilidad_lluvia_item_menu" sequence="3"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Sectors" id="df_probabilidad_sector_item_menu" action="df_action_probabilidad_sector" parent="df0_probabilidad_lluvia_item_menu" sequence="2"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Underground basins" id="df_probabilidad_cuenca_item_menu" action="df_action_probabilidad_cuenca" parent="df0_probabilidad_lluvia_item_menu" sequence="1"/>
+	
+        <menuitem name="Planned exploitation" id="df_explotacion_plan_item_menu" parent="menu_top_df_hc_acuifero" sequence="7"/>
+            <menuitem name="Wells" id="df_explotacion_plan_pozo_item_menu" action="df_action_explotacion_pozo_plan" parent="df_explotacion_plan_item_menu" sequence="4"/>
+            <menuitem name="Blocks" id="df_explotacion_plan_bloque_item_menu" action="df_action_explotacion_block_plan" parent="df_explotacion_plan_item_menu" sequence="3"/>
+            <menuitem name="Sectors" id="df_explotacion_plan_sector_item_menu" action="df_action_explotacion_sector_plan" parent="df_explotacion_plan_item_menu" sequence="2"/>
+            <menuitem name="Underground basins" id="df_explotacion_plan_cuenca_item_menu" action="df_action_explotacion_cuenca_plan" parent="df_explotacion_plan_item_menu" sequence="1"/>
+
+        <menuitem name="Real exploitation" id="df_explotacion_real_item_menu" parent="menu_top_df_hc_acuifero" sequence="6"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Wells" id="df_explotacion_real_pozo_item_menu" action="df_action_explotacion_pozo_real" parent="df_explotacion_real_item_menu" sequence="5"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Blocks" id="df_explotacion_real_bloque_item_menu" action="df_action_explotacion_block_real" parent="df_explotacion_real_item_menu" sequence="3"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Sectors" id="df_explotacion_real_sector_item_menu" action="df_action_explotacion_sector_real" parent="df_explotacion_real_item_menu" sequence="2"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Underground basins" id="df_explotacion_real_cuenca_item_menu" action="df_action_explotacion_cuenca_real" parent="df_explotacion_real_item_menu" sequence="1"/>
+
+        <menuitem name="Rain real" id="df_lluvia_real_item_menu" parent="menu_top_df_hc_acuifero" sequence="11"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Wells"   id="df_lluvia_real_pozo_item_menu" action="df_action_lluvia_real_pozo" parent="df_lluvia_real_item_menu" sequence="4"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Blocks"  id="df_lluvia_real_bloque_item_menu" action="df_action_lluvia_real_bloque" parent="df_lluvia_real_item_menu" sequence="4"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Sectors" id="df_lluvia_real_sector_item_menu" action="df_lluvia_real_sector_act_window" parent="df_lluvia_real_item_menu" sequence="1"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Cuenca"  id="df_lluvia_real_cuenca_menu" parent="df_lluvia_real_item_menu" action="df_lluvia_real_cuenca_act_window" sequence="2"/>
+
+
+        <menuitem name="Import" icon="terp-project" id="df_import_item_menu" parent="menu_top_df_hc_acuifero" sequence="7"/>
+            <menuitem  groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Wells" id="df_importar_excel_pozos_item_menu" action="action_df_importar_pozos" parent="df_import_item_menu" sequence="1"/>
+            <menuitem  groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Wells levels" id="df_importar_pozos_item_menu" action="action_df_importar_niveles_pozos" parent="df_import_item_menu" sequence="2"/>
+            <menuitem  groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Exploitation" id="df_importar_explotacion_item_menu" action="df_action_importar_explotacion1" parent="df_import_item_menu" sequence="3"/>
+            <menuitem  groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Probability" id="df_importar_probabilidad_lluvia_item_menu" action="df_action_importar_probabilidad_lluvia" parent="df_import_item_menu" sequence="4"/>
+            <menuitem  groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Lluvia real" id="df_importar_lluvia_real_item_menu" action="df_action_importar_lluvia_real" parent="df_import_item_menu" sequence="5"/>
+            <menuitem  groups="group_hc_especialista_acuifero" name="Integration" id="df_f_acuifero_integracion_item_menu" action="action_df_acuifero_integracion" parent="df_import_item_menu" sequence="5"/>
+
+        <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Reports" icon="terp-project" id="df_report_item_menu" parent="menu_top_df_hc_acuifero" sequence="8"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Bound water" id="df_report_cota_agua_item_menu" action="df_action_report_cota_agua" parent="df_report_item_menu" sequence="1"/>
+
+        <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Graphics" icon="terp-project" id="df_grafics_item_menu" parent="menu_top_df_hc_acuifero" sequence="9"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="GCBAS"  id="df_hc_grafica_comportamiento_acuifero_view" action="action_configurar_grafica_gcbas"  parent="df_grafics_item_menu" sequence="1"/>
+		    <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="With scales"  id="df_hc_grafica_grafico_limnigrama_cotas_view" action="action_configurar_grafica" parent="df_grafics_item_menu" sequence="2"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Combined"  id="df_hc_grafica_grafico_explotacion_view" action="action_configurar_grafica_explotacion" parent="df_grafics_item_menu" sequence="3"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Travels"  id="df_hc_grafica_grafico_recorridos_view" action="action_configurar_grafica_recorridos" parent="df_grafics_item_menu" sequence="4"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Humid pronostic"  id="df_hc_grafica_grafico_pronostico_view" action="action_configurar_grafica_pronostico" parent="df_grafics_item_menu" sequence="5"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Dry pronostic"  id="df_hc_grafica_grafico_pronostico_seco_view" action="action_configurar_grafica_pronostico_seco" parent="df_grafics_item_menu" sequence="6"/>
+        
+		<menuitem groups="group_hc_especialista_acuifero" name="Export" id="df_exportar_item_menu" parent="menu_top_df_hc_acuifero" sequence="10"/>
+            <menuitem groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero" name="Export average levels of wells" id="df_exportar_media_item_menu" action="action_exportar_media" parent="df_exportar_item_menu" sequence="1"/>
+
+
+        <menuitem groups="group_hc_base_director_nacional" name="Current state of the counties" id="df_provincia_cuenca_item_menu" action="df_action_provincia_cuenca" parent="menu_top_df_hc_acuifero" sequence="11"/>
+
+        <record id="df_hc_action_mapa_ubicacion_pozos" model="ir.actions.client">
+            <field name="name">Ubicación geográfica de pozos</field>
+            <field name="tag">df_hc_acuifero_mapa_ubicacion_pozos</field>
+        </record>
+
+        <record id="df_action_mapa_estado_actual_prov" model="ir.actions.client">
+            <field name="name">Estado actual de las provincias</field>
+            <field name="tag">df_hc_acuifero_mapa_estado_actual_prov</field>
+        </record>
+
+        <menuitem id="df_hc_gis_menu" name="Información geográfica" parent="menu_top_df_hc_acuifero" sequence="12" groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero"/>
+            <menuitem id="df_hc_mapa_ubicacion_pozos_menu" name="Ubicación geográfica de pozos"  action="df_hc_action_mapa_ubicacion_pozos"  parent="df_hc_gis_menu" sequence="1" groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero"/>
+            <menuitem id="df_hc_mapa_estado_actual_prov_menu" name="Estado actual de las provincias"  action="df_action_mapa_estado_actual_prov"  parent="df_hc_gis_menu" sequence="2" groups="group_hc_especialista_acuifero,group_hc_visualizar_acuifero"/>
+
+  </data>
+</odoo>

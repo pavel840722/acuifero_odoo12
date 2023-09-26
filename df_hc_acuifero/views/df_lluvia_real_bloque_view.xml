@@ -1,0 +1,97 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_lluvia_real_bloque_search">
+            <field name="name">lluvia_real_bloque</field>
+            <field name="model">df.lluvia.real.bloque</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Lluvia real de los bloques">
+                    <group>
+                        <field name="anno"/>
+                        <!--<field name="anno_final"/>-->
+                        <!--<field name="codigo"/>-->
+                        <field name="bloque_id"/>
+                        <!--<field name="sigla"/>-->
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Bloque" name="bloque_id"  domain="[]" context="{'group_by':'bloque_id'}"
+                                help="Filter according to the well context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record  model="ir.ui.view" id="view_lluvia_real_bloque_form">
+            <field name="name">lluvia_real_bloque</field>
+            <field name="model">df.lluvia.real.bloque</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Lluvia real del bloque">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="bloque_id"/>
+                                <field name="media_hiperanual_mayo" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_julio" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_septiembre" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                                <field name="media_hiperanual_junio" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_agosto" options='{"regex": "^[0-9 .]+$"}' />
+                                <field name="media_hiperanual_octubre" options='{"regex": "^[0-9 .]+$"}' />
+                            </group>
+                        </group>
+                    </sheet>
+
+                    <!--<field name="media_hiperanual_enero_string" options='{"regex": "^[0-9 .]+$", "invalidMsg": "Invalid characters in field"}' />-->
+                    <!--<field name="media_hiperanual_febrero_string" options='{"regex": "^[0-9 .]+$", "invalidMsg": "Invalid characters in field"}' />-->
+                    <!--<field name="media_hiperanual_marzo_string" options='{"regex": "^[0-9 .]+$", "invalidMsg": "Invalid characters in field"}'/>-->
+                    <!--<field name="media_hiperanual_abril_string" options='{"regex": "^[0-9 .]+$", "invalidMsg": "Invalid characters in field"}'/>-->
+
+                    <!--<field name="media_hiperanual_noviembre_string" options='{"regex": "^[0-9 .]+$", "invalidMsg": "Invalid characters in field"}'/>-->
+                    <!--<field name="media_hiperanual_diciembre_string" options='{"regex": "^[0-9 .]+$", "invalidMsg": "Invalid characters in field"}'/>-->
+                    <!--<field name="anno_final" invisible="1"/>-->
+                </form>
+            </field>
+        </record>
+        <record  model="ir.ui.view" id="view_lluvia_real_bloque_tree">
+            <field name="name">lluvia_real_bloque</field>
+            <field name="model">df.lluvia.real.bloque</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Lluvia real de los bloques">
+                    <field name="bloque_id"/>
+                    <field name="anno"/>
+                    <!--<field name="media_hiperanual_enero_string" />-->
+                    <!--<field name="media_hiperanual_febrero_string" />-->
+                    <!--<field name="media_hiperanual_marzo_string" />-->
+                    <!--<field name="media_hiperanual_abril_string" />-->
+                    <field name="media_hiperanual_mayo" />
+                    <field name="media_hiperanual_junio" />
+                    <field name="media_hiperanual_julio" />
+                    <field name="media_hiperanual_agosto" />
+                    <field name="media_hiperanual_septiembre" />
+                    <field name="media_hiperanual_octubre" />
+                    <!--<field name="media_hiperanual_noviembre_string" />-->
+                    <!--<field name="media_hiperanual_diciembre_string" />-->
+                </tree>
+            </field>
+        </record>
+
+<!--        <record model="ir.actions.act_window" id="df_action_lluvia_real_bloque">-->
+<!--            <field name="res_model">df.lluvia.real.bloque</field>-->
+<!--        </record>-->
+
+        <record model="ir.actions.act_window" id="df_action_lluvia_real_bloque">
+            <field name="name">Real rain from the blocks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.lluvia.real.bloque</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+       </record>
+    </data>
+</openerp>

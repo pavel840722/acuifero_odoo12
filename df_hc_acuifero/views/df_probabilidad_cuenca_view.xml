@@ -1,0 +1,104 @@
+<odoo>
+    <data>
+
+
+
+        <record model="ir.ui.view" id="view_probabilidad_cuenca_search">
+            <field name="name">probabilidad_cuenca.search</field>
+            <field name="model">df.probabilidad.cuenca</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Planned exploitation of blocks">
+                    <group>
+                        <field name="anno"/>
+                        <field name="cuenca_id"/>
+                        <field name="probabilidad"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group by...">
+                        <filter icon="terp-go-year" string="Basins" name="cuenca_id"  domain="[]" context="{'group_by':'cuenca_id'}"
+                                help="Filter according to the basin context"/>
+                        <filter icon="terp-go-year" string="Year" name="anno"  domain="[]" context="{'group_by':'anno'}"
+                                help="Filter according to the year context"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="probabilidad_cuenca_form_view">
+            <field name="name">probabilidad.cuenca.form</field>
+            <field name="model">df.probabilidad.cuenca</field>
+            <field name="type">form</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Planned exploitation of block">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="cuenca_id"/>
+								<field name="probabilidad"/>
+                            </group>
+                            <group>
+                                <field name="anno" options='{"regex": "^[1-9]{1}\\d{3}$"}' />
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_enero" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_febrero" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_marzo" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_abril" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_mayo" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_junio" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                            <group>
+                                <field name="media_hiperanual_julio" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_agosto" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_septiembre" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_octubre" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_noviembre" options='{"regex": "^[0-9 .]+$"}'/>
+                                <field name="media_hiperanual_diciembre" options='{"regex": "^[0-9 .]+$"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record  model="ir.ui.view" id="view_probabilidad_cuenca_tree">
+            <field name="name">probabilidad_cuenca.tree</field>
+            <field name="model">df.probabilidad.cuenca</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree string="Planned exploitation of blocks">
+                    <field name="cuenca_id"/>
+                    <field name="probabilidad"/>
+					<field name="anno"/>
+					<field name="media_hiperanual_enero" />
+                    <field name="media_hiperanual_febrero" />
+                    <field name="media_hiperanual_marzo" />
+                    <field name="media_hiperanual_abril" />
+                    <field name="media_hiperanual_mayo" />
+                    <field name="media_hiperanual_junio" />
+                    <field name="media_hiperanual_julio" />
+                    <field name="media_hiperanual_agosto" />
+                    <field name="media_hiperanual_septiembre" />
+                    <field name="media_hiperanual_octubre" />
+                    <field name="media_hiperanual_noviembre" />
+                    <field name="media_hiperanual_diciembre" />
+                </tree>
+            </field>
+        </record>
+
+		<record model="ir.actions.act_window" id="df_action_probabilidad_cuenca">
+            <field name="name">Probabilidad Lluvia Cuenca</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">df.probabilidad.cuenca</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="limit">20</field>
+        </record> 
+
+
+
+    </data>
+</odoo>

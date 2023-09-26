@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding ="UTF-8"?>
+<templates>
+    <t t-name="df_hc_acuifero_grafico_recorridos_view">
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+
+        <!--****************** Estilo del TabPanel **********************-->
+        <style>
+            body {font-family: Arial;}
+
+            /* Style the tab */
+            .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+            background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+            background-color: #ccc;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            border: 1px solid #ccc;
+            }
+
+            /* Fade in tabs */
+            @-webkit-keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+            }
+
+            @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+            }
+        </style>
+
+
+        <!--****************** Estilo del Grafico con Highcharts **********************-->
+        <style type="text/css">
+            .highcharts-figure, .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 1000px;
+            margin: 5px;
+            }
+
+            #container {
+            heigth:400px;
+            width:1000px;
+            }
+        </style>
+
+        <!--****************** Para mostrar el grafico cuando se ejecute por primera vez la accion **********************-->
+        <script>
+            $('#d_grafico').show();
+        </script>
+
+        <div class="tab" id="id1">
+            <button id="b_grafico" class="tablinks">Gráfico</button>
+            <button id="b_tabla" class="tablinks">Tabla de recorridos</button>
+            <button id="b_regresion" class="tablinks">Tabla Regresión</button>
+            <button id="b_z_t" class="tablinks">Tabla Z/T</button>
+        </div>
+
+        <div id="d_grafico" class="tabcontent">
+            <figure class="highcharts-figure">
+                <div id='container'></div>
+            </figure>
+            <canvas id="canvas" width="100%" height="100%"></canvas>
+        </div>
+
+        <div id="d_tabla_recorridos" class="tabcontent">
+
+            <div id="contenedor_tab2" style="width:100%;heigth:100%">
+
+                <button class="btn_top_accion derecha" id="btn_exportar" height="25px" width="25px">
+                    <img src="/df_hc_acuifero/static/src/img/excel.png" height="25px" width="25px"/>
+                </button>
+                <table class="clear_derecha">
+
+                    <tr>
+                        <td style="width:98%;heigth:600px">
+                            <table id='tbl_resumen' cellspacing="0" cellpadding="0" border="1"
+                                   style="width:100%;heigth:600px">
+                                <tr>
+                                    <td class="tabla_cabezera" colspan="3">
+                                        <b>
+                                            <span style="color:white;mso-themecolor:background1">Travel 1</span>
+                                        </b>
+                                    </td>
+                                    <td class="tabla_cabezera" colspan="3">
+                                        <b>
+                                            <span style="color:white;mso-themecolor:background1">Travel 2</span>
+                                        </b>
+                                    </td>
+                                    <!--<td class="tabla_cabezera" colspan="3"><b><span style="color:white;mso-themecolor:background1">Travel 3</span></b></td>-->
+                                </tr>
+                                <tr>
+                                    <td class="tabla_2da_cabezera">
+                                        <b>Months</b>
+                                    </td>
+                                    <td class="tabla_2da_cabezera">
+                                        <b>N.E(m)</b>
+                                    </td>
+                                    <td class="tabla_2da_cabezera">
+                                        <b>C.A(m)</b>
+                                    </td>
+                                    <td class="tabla_2da_cabezera">
+                                        <b>Months</b>
+                                    </td>
+                                    <td class="tabla_2da_cabezera">
+                                        <b>N.E(m)</b>
+                                    </td>
+                                    <td class="tabla_2da_cabezera">
+                                        <b>C.A(m)</b>
+                                    </td>
+                                    <!--<td class="tabla_2da_cabezera"><b>Months</b></td>-->
+                                    <!--<td class="tabla_2da_cabezera"><b>N.E(m)</b></td>-->
+                                    <!--<td class="tabla_2da_cabezera"><b>C.A(m)</b></td>-->
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="d_regresion" class="tabcontent">
+            <div id="contenedor_tab3" style="width:960px;heigth:100%">
+                <table id='tbl_contenedor_cota_regresion' cellspacing="0" cellpadding="0" border="1"
+                       style="width:600px;heigth:800px;vertical-align: top;">
+                    <tr>
+                        <td style="width:600;heigth:800px;">
+                            <div id="div_chart_recorrido_cota_1" style="width:600px;heigth:400px;"/>
+                            <div id="div_chart_recorrido_cota_2" style="width:600px;heigth:400px;"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="d_z_t" class="tabcontent">
+            <div id="contenedor_tab4" style="width:960px;heigth:100%">
+                <table id='tbl_contenedor_zt' cellspacing="0" cellpadding="0" border="1"
+                       style="width:960px;heigth:800px;vertical-align: top;">
+                    <tr>
+                        <td style="width:800px;heigth:800px;">
+                            <div id="div_chart_zt" style="width:800px;heigth:800px;"/>
+                        </td>
+                        <td style="width:160px;heigth:800px;">
+                            <b>
+                                <span style="color:black;mso-themecolor:background1">Guardar Tabla</span>
+                            </b>
+                            <button class="btn_top_accion derecha" id="btn_save_rec1" height="25px" width="25px">
+                                <img src="/df_hc_base/static/src/img/enabledTriggers.png" height="25px"
+                                     width="25px"/>
+                            </button>
+                            <table id='tbl_cota_regresion_1' cellspacing="0" cellpadding="0" border="1">
+                                <tr>
+                                    <td class="tabla_cabezera_secundaria">
+                                        <b>
+                                            <span style="color:white;mso-themecolor:background1">Time</span>
+                                        </b>
+                                    </td>
+                                    <td class="tabla_cabezera_secundaria">
+                                        <b>
+                                            <span style="color:white;mso-themecolor:background1">Regresion</span>
+                                        </b>
+                                    </td>
+                                    <td class="tabla_cabezera_secundaria">
+                                        <b>
+                                            <span style="color:white;mso-themecolor:background1">Z/T</span>
+                                        </b>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </t>
+</templates>

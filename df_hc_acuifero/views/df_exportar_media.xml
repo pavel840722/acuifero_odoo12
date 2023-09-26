@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="df_exportar_media_view" model="ir.ui.view">
+            <field name="name">Export average level of wells</field>
+            <field name="model">df.exportar.media</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Export average level of wells" options='{"action_buttons": false, "sidebar": false}'>
+                    <group>
+                        <group>
+                            <group colspan="8" col="2">
+                                <field name="desde"/>
+                                <field name="hasta"/>
+                                <field name="elemento_exportar" colspan='4' />
+                            </group>
+                        </group>
+                        <group>
+                            <group colspan="8" col="2">
+                            </group>
+                        </group>
+
+<!--on_change="onchange_elemento_exportar()"-->
+                        <group colspan="8" col="2">
+                            <field name="metodo_formula" attrs="{'invisible':[('elemento_exportar','=','pozo')]}"/>
+                            <!--<field name="a0" attrs="{'invisible':[('metodo_formula','=',False)], 'required':[('metodo_formula','=',True)]}" />-->
+                            <!--<field name="a1" attrs="{'invisible':[('metodo_formula','=',False)], 'required':[('metodo_formula','=',True)]}" />-->
+
+                            <field name="bloque_ids" attrs="{'invisible':[('elemento_exportar','!=','bloque')]}" colspan='6' string='Blocks'/>
+                            <field string='Wells' options='{"nocreate": true}' name="pozo_bloque_ids" attrs="{'invisible':[('elemento_exportar','!=','bloque')]}" colspan='6'
+                                   context="{'exportar_filtro':'bloque','filtro':bloque_ids}">
+                                <tree string="Wells" >
+                                    <field name="sigla"/>
+                                </tree>
+                                <form string="Wells">
+                                    <field name="sigla"/>
+                                </form>
+                            </field>
+
+                            <field name="sector_ids" attrs="{'invisible':[('elemento_exportar','!=','sector')]}" colspan='6' string='Hydrogeological sectors'/>
+                            <field string='Wells' options='{"nocreate": true}' name="pozo_sector_ids" attrs="{'invisible':[('elemento_exportar','!=','sector')], 'readonly':[('sector_ids','=',False)]}" colspan='6'
+                                   context="{'exportar_filtro':'sector','filtro':sector_ids}">
+                                <tree string="Wells" >
+                                    <field name="sigla"/>
+                                </tree>
+                                <form string="Wells">
+                                    <field name="sigla"/>
+                                </form>
+                            </field>
+
+                            <field name="cuenca_ids" attrs="{'invisible':[('elemento_exportar','!=','cuenca')]}" colspan='6' string='Underground basins'/>
+                            <field string='Wells' options='{"nocreate": true}' name="pozo_cuenca_ids" attrs="{'invisible':[('elemento_exportar','!=','cuenca')]}" colspan='6'
+                                   context="{'exportar_filtro':'cuenca','filtro':cuenca_ids}">
+                                <tree string="Wells" >
+                                    <field name="sigla"/>
+                                </tree>
+                                <form string="Wells">
+                                    <field name="sigla"/>
+                                </form>
+                            </field>
+                        </group>
+                    </group>
+                    <footer>
+                        <button special="cancel" string="Cancel" class="btn btn-outline-primary" icon='fa-times-circle'/>
+                        <button name="exportar" string="Export" type="object" class="btn btn-outline-primary" icon='fa-download'/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_exportar_media" model="ir.actions.act_window">
+            <field name="name">Export average level of wells</field>
+            <field name="res_model">df.exportar.media</field>
+<!--            <field name="type">ir.actions.act_window</field>-->
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+<!--            <field name="view_id" ref="df_exportar_media_view"/>-->
+            <field name="target">new</field>
+        </record>
+
+<!--        &lt;!&ndash; Formulario con el fichero para descargar de la media de los niveles de los pozos&ndash;&gt;-->
+<!--		<record id="df_exportar_media_dialogo_view" model="ir.ui.view">-->
+<!--		      <field name="name">Take the xls file</field>-->
+<!--		      <field name="model">df.exportar.media.dialogo</field>-->
+<!--		      <field name="type">form</field>-->
+<!--		      <field name="arch" type="xml">-->
+<!--				<form string="Take the zip file">-->
+<!--                    <field name="module_file" filename="module_filename" readonly="1" colspan="4"/>-->
+<!--                    <field name="module_filename" invisible="1" colspan="2"/>-->
+<!--					<separator colspan="4"/>-->
+<!--                    <group col="2" colspan="4">-->
+<!--                         <button icon="gtk-cancel" special="cancel" string="Close"/>-->
+<!--                    </group>-->
+<!--				</form>-->
+<!--		      </field>-->
+<!--    	</record>-->
+
+<!--    	<record id="action_exportar_media_dialogo_form" model="ir.actions.act_window">-->
+<!--            <field name="name">File for download</field>-->
+<!--            <field name="res_model">df.exportar.media.dialogo</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--           <field name="view_id" ref="df_exportar_media_dialogo_view"/>-->
+<!--           <field name="target">new</field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>
